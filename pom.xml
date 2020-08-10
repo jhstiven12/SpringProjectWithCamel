@@ -12,18 +12,16 @@
 		<spring-boot.version>1.5.13.RELEASE</spring-boot.version>
 		<fabric8.version>3.0.12</fabric8.version>
 		<!-- versions of Maven plugins -->
-		<fabric8.maven.plugin.version>3.5.33.fuse-000089-redhat-4</fabric8.maven.plugin.version>
-
+		<fabric8.maven.plugin.version>4.3.0</fabric8.maven.plugin.version>
 		<version.maven-compiler-plugin>3.7.0</version.maven-compiler-plugin>
 		<version.maven-resources-plugin>3.1.0</version.maven-resources-plugin>
 		<version.maven-surefire-plugin>3.0.0-M3</version.maven-surefire-plugin>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<swagger-ui.version>3.20.0</swagger-ui.version>
-
 		<spring-cloud.version>2.0.4.BUILD-SNAPSHOT</spring-cloud.version>
+		<ambiente>dev</ambiente>
 	</properties>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -33,16 +31,8 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!-- <dependency> -->
-			<!-- <groupId>org.springframework.cloud</groupId> -->
-			<!-- <artifactId>spring-cloud-dependencies</artifactId> -->
-			<!-- <version>${spring-cloud.version}</version> -->
-			<!-- <type>pom</type> -->
-			<!-- <scope>import</scope> -->
-			<!-- </dependency> -->
 		</dependencies>
 	</dependencyManagement>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -107,12 +97,11 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<resources>
 			<resource>
 				<filtering>true</filtering>
-				<directory>src/main/resources/dev</directory>
+				<directory>src/main/resources/${ambiente}</directory>
 				<includes>
 					<include>application.properties</include>
 				</includes>
@@ -182,7 +171,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<repositories>
 		<repository>
 			<id>redhat-ga-repository</id>
@@ -203,7 +191,6 @@
 			</snapshots>
 		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>redhat-ga-repository</id>
@@ -224,7 +211,6 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
 	<profiles>
 		<profile>
 			<id>openshift</id>
